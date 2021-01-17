@@ -1,0 +1,1098 @@
+<UserLogin>:
+    name: "userlogin"
+    on_enter: root.anim_card(card_user_login)
+    BoxLayout:
+        canvas.after:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            right_action_items: [["account-supervisor-circle", lambda x: root.goto_superlogin()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_user_login
+            opacity: 0
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Logga in"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Användare"
+                    color: 0, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: email
+                    hint_text: 'Email'
+                    helper_text_mode: "on_error"
+                    helper_text: "Email Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDTextField:
+                    id: pwd
+                    icon_left: 'key-variant'
+                    hint_text: 'Lösenord'
+                    mode: "rectangle"
+                    helper_text_mode: "on_error"
+                    pos_hint: {"center_y": 0.5}
+                    helper_text: "Lösenord Krävs"
+                    required: True
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Logga in"
+                    font_size: "20dp"
+                    on_release:
+                        root.login()
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDRectangleFlatButton:
+                    size_hint: [0.7, 0.4]
+                    pos_hint: {"center_y": 0.5}
+                    text: "Registrera"
+                    font_size: "16dp"
+                    on_release:
+                        app.root.current = "registeruser"
+
+
+<SuperLogin>:
+    name: "superlogin"
+    BoxLayout:
+        canvas.after:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            right_action_items: [["account", lambda x: root.goto_userlogin()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_sup_login
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Logga in"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Administratör"
+                    color: 0.7, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: email
+                    hint_text: 'Email'
+                    helper_text_mode: "on_error"
+                    helper_text: "Email Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDTextField:
+                    id: pwd
+                    icon_left: 'key-variant'
+                    hint_text: 'Lösenord'
+                    mode: "rectangle"
+                    helper_text_mode: "on_error"
+                    pos_hint: {"center_y": 0.5}
+                    helper_text: "Lösenord Krävs"
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Logga in"
+                    font_size: "20dp"
+                    on_release:
+                        root.login()
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDRectangleFlatButton:
+                    size_hint: [0.7, 0.4]
+                    pos_hint: {"center_y": 0.5}
+                    text: "Registrera"
+                    font_size: "16dp"
+                    on_release:
+                        app.root.current = "registersupervisor"
+
+
+<RegisterUser>:
+    name: "registeruser"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            right_action_items: [["account", lambda x: root.goto_userlogin()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_2_user
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 1.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Registrera"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Användare"
+                    color: 0, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: email
+                    hint_text: 'Email'
+                    helper_text_mode: "on_error"
+                    helper_text: "Email Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: pwd
+                    hint_text: 'Lösenord'
+                    helper_text_mode: "on_error"
+                    helper_text: "Lösenord Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: pwd_conf
+                    hint_text: 'Bekräfta Lösenord'
+                    helper_text_mode: "on_error"
+                    helper_text: "Lösenord Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Registrera"
+                    font_size: "20dp"
+                    on_release:
+                        root.register_user()
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+
+        MDCard:
+            id: card_1_user
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Registrera"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Användare"
+                    color: 0, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: name
+                    hint_text: 'Namn'
+                    helper_text_mode: "on_error"
+                    helper_text: "Namn Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: surname
+                    hint_text: 'Efternamn'
+                    helper_text_mode: "on_error"
+                    helper_text: "Efternamn Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDRaisedButton:
+                    id: btn_institution
+                    text: "Välj institution"
+                    on_release: root.show_institutions()
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                MDLabel:
+                    id: inst_label
+                    color: (0, 0, 0, 1)
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDTextField:
+                    id: age
+                    hint_text: 'Ålder'
+                    mode: "rectangle"
+                    max_text_length: 2
+                    input_filter: "int"
+                    pos_hint: {"center_y": 0.5}
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDRaisedButton:
+                    id: btn_sexes
+                    text: "Välj Kön"
+                    on_release: root.show_sexes()
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                MDLabel:
+                    id: sex_label
+                    color: (0, 0, 0, 1)
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Nästa"
+                    font_size: "20dp"
+                    on_release:
+                        root.anim_to_next(card_1_user, card_2_user)
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+
+<RegisterSupervisor>:
+    name: "registersupervisor"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            right_action_items: [["account-supervisor-circle", lambda x: root.goto_superlogin()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_2_super
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 1.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Registrera"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Administratör"
+                    color: 0.7, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: email
+                    hint_text: 'Email'
+                    helper_text_mode: "on_error"
+                    helper_text: "Email Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: pwd
+                    hint_text: 'Lösenord'
+                    helper_text_mode: "on_error"
+                    helper_text: "Lösenord Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: pwd_conf
+                    hint_text: 'Bekräfta Lösenord'
+                    helper_text_mode: "on_error"
+                    helper_text: "Lösenord Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+                    password: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Registrera"
+                    font_size: "20dp"
+                    on_release:
+                        root.register_super()
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+
+        MDCard:
+            id: card_1_super
+            orientation: 'vertical'
+            size_hint: [0.9, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: [1, 0.1]
+                MDLabel:
+                    halign: "center"
+                    text: "Registrera"
+                    color: 0, 0, 0, 0.8
+                    font_size: "25dp"
+                    bold: True
+                MDLabel:
+                    halign: "center"
+                    text: "Administratör"
+                    color: 0.7, 0.1, 0.3, 0.8
+                    font_size: "15dp"
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: name
+                    hint_text: 'Namn'
+                    helper_text_mode: "on_error"
+                    helper_text: "Namn Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDTextField:
+                    id: surname
+                    hint_text: 'Efternamn'
+                    helper_text_mode: "on_error"
+                    helper_text: "Efternamn Krävs"
+                    pos_hint: {"center_y": 0.5}
+                    mode: "rectangle"
+                    required: True
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                spacing: "20dp"
+                MDRaisedButton:
+                    id: btn_institution
+                    text: "Välj institution"
+                    on_release: root.show_institutions()
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                MDLabel:
+                    id: inst_label
+                    color: (0, 0, 0, 1)
+            BoxLayout:
+                size_hint: [0.8, 0.1]
+                pos_hint: {"center_x": 0.5}
+                MDFillRoundFlatButton:
+                    pos_hint: {"center_x": 0.5}
+                    size_hint: [0.7, 0.5]
+                    text: "Nästa"
+                    font_size: "20dp"
+                    on_release:
+                        root.anim_to_next(card_1_super, card_2_super)
+            BoxLayout:
+                size_hint: [0.4, 0.1]
+
+<UserHome>:
+    name: "userhome"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_userhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_user_home
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'horizontal'
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "head-question-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+                        on_release:
+                            app.root.transition.direction = "left"
+                            app.root.current = "userforms"
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "chart-line"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+            BoxLayout:
+                orientation: 'horizontal'
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "calendar-month-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "account-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+<SuperHome>:
+    name: "superhome"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_supervisorhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_super_home
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'horizontal'
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "account-plus-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+                        on_release:
+                            app.root.current = "superrequests"
+
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "chart-bar"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+            BoxLayout:
+                orientation: 'horizontal'
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "calendar-month-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+                FloatLayout:
+                    MDIconButton:
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                        icon: "account-outline"
+                        user_font_size: "64sp"
+                        md_bg_color: app.theme_cls.primary_color
+
+
+<UserForms>:
+    name: "userforms"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_userhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_user_forms
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            FloatLayout:
+                id: float_itms
+                orientation: 'vertical'
+                TwoLineAvatarListItem:
+                    opacity: 0
+                    id: itm_1
+                    pos_hint: {"center_y": 1.5}
+                    text: "Annat Frågeformulär"
+                    secondary_text: "Svara på frågorna för..."
+                    ImageLeftWidget:
+                        source: "check_icon.png"
+                TwoLineAvatarListItem:
+                    opacity: 0
+                    id: itm_2
+                    pos_hint: {"center_y": 1.5}
+                    text: "Tillfredsskalan"
+                    secondary_text: "Svara på frågorna för tillfredsskalan"
+                    ImageLeftWidget:
+                        source: "action_icon.png"
+                TwoLineAvatarListItem:
+                    opacity: 0
+                    id: itm_3
+                    pos_hint: {"center_y": 1.5}
+                    text: "IDS-100"
+                    secondary_text: "Svara på frågorna för IDS-100"
+                    on_release:
+                        app.root.current = "ids100form"
+                    ImageLeftWidget:
+                        id: ids_100_icon
+                        source: "action_icon.png"
+
+
+<Ids100Form>:
+    name: "ids100form"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FloatLayout:
+        MDCard:
+            id: question_card
+            orientation: 'vertical'
+            size_hint: [1, 0.3]
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            BoxLayout:
+                MDLabel:
+                    id: question_label
+                    text: "Du kommer nu få svara på 100 frågor. Du ska värdeskatta hur pass väl påståendet stämmer in. Detta gör du genom att markera det svarsalternativ som bäst stämmer. Klicka på 'Nästa' för att starta."
+                    color: (0, 0, 0, 1)
+                    halign: "center"
+                    pos_hint: {"center_y": 0.5}
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    font_size: "20dp"
+                    size_hint: 1, None
+        MDCard:
+            id: ans_card
+            orientation: 'vertical'
+            size_hint: [1, 0.2]
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    size_hint: [1, 0.5]
+                    orientation: 'horizontal'
+                    CheckBox:
+                        id: chk_0
+                        text: "0"
+                        color: (0, 0, 0, 1)
+                        group: "ans"
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_1
+                        text: "1"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_2
+                        text: "2"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_3
+                        text: "3"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                BoxLayout:
+                    size_hint: [1, 0.3]
+                    orientation: 'horizontal'
+                    MDLabel:
+                        halign: "center"
+                        text: "Aldrig"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Ibland"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Ofta"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Nästan Alltid"
+                        color: (0, 0, 0, 1)
+
+        MDRectangleFlatButton:
+            pos_hint: {"center_x": 0.5, "center_y": 0.15}
+            size_hint: [0.4, 0.08]
+            text: "Nästa"
+            font_size: "20dp"
+            text_color: 0, 0, 1, 1
+            md_bg_color: 1, 1, 1, 0.8
+            on_release:
+                root.next_question()
+
+        MDRectangleFlatButton:
+            pos_hint: {"center_x": 0.5, "center_y": 0.05}
+            size_hint: [0.4, 0.08]
+            text: "Autofyll"
+            font_size: "20dp"
+            text_color: 0, 0, 1, 1
+            md_bg_color: 1, 1, 1, 0.8
+            on_release:
+                root.autofill_questions()
+
+
+<Ids100Results>:
+    name: "ids100results"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_userhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_ids_results
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: 'horizontal'
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l0
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "11dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn0
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l1
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn1
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l2
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn2
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l3
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn3
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l4
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn4
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l5
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn5
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l6
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn6
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        id: l7
+                        text_size: self.width, None
+                        halign: 'center'
+                        font_size: "12dp"
+                        color: (0, 0, 0, 1)
+                    Button:
+                        id: btn7
+
+
+<SuperRequests>:
+    name: "superrequests"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_superhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_acc_spec_req
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 1.5, "center_y": 0.5}
+            BoxLayout:
+                orientation: "horizontal"
+                BoxLayout:
+                    size_hint: [0.1, 1]
+                BoxLayout:
+                    orientation: "vertical"
+                    BoxLayout:
+                        MDTextField:
+                            id: name
+                            helper_text_mode: "on_error"
+                            helper_text: "Förnamn Krävs"
+                            #mode: "rectangle"
+                            required: True
+                    BoxLayout:
+                        MDTextField:
+                            id: surname
+                            helper_text_mode: "on_error"
+                            helper_text: "Efternamn Krävs"
+                            #mode: "rectangle"
+                            required: True
+                    BoxLayout:
+                        MDTextField:
+                            id: age
+                            helper_text_mode: "on_error"
+                            helper_text: "Ålder Krävs"
+                            #mode: "rectangle"
+                            required: True
+                            max_text_length: 2
+                            input_filter: int
+                    BoxLayout:
+                        MDTextField:
+                            id: email
+                            helper_text_mode: "on_error"
+                            helper_text: "Email Krävs"
+                            #mode: "rectangle"
+                            required: True
+                    BoxLayout:
+                        orientation: "horizontal"
+                        spacing: "30dp"
+                        BoxLayout:
+                            size_hint: [0.3, 1]
+                            MDRectangleFlatIconButton:
+                                text: "Avvisa"
+                                icon: "account-check"
+                                on_release:
+                                    root.deny_user()
+                        BoxLayout:
+                            size_hint: [0.3, 1]
+                            MDRectangleFlatIconButton:
+                                text: "Godkänn"
+                                icon: "account-off"
+                                on_release:
+                                    root.accept_user()
+                BoxLayout:
+                    size_hint: [0.1, 1]
+        MDCard:
+            id: card_requests
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            ScrollView:
+                MDList:
+                    id: users_list
+
+
+<SatisfactionScale>:
+    name: "satisfactionscale"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    FloatLayout:
+        MDCard:
+            id: question_card
+            orientation: 'vertical'
+            size_hint: [1, 0.3]
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            BoxLayout:
+                MDLabel:
+                    id: question_label
+                    text: "Du kommer nu få svara på 100 frågor. Du ska värdeskatta hur pass väl påståendet stämmer in. Detta gör du genom att markera det svarsalternativ som bäst stämmer. Klicka på 'Nästa' för att starta."
+                    color: (0, 0, 0, 1)
+                    halign: "center"
+                    pos_hint: {"center_y": 0.5}
+                    height: self.texture_size[1]
+                    text_size: self.width, None
+                    font_size: "20dp"
+                    size_hint: 1, None
+        MDCard:
+            id: ans_card
+            orientation: 'vertical'
+            size_hint: [1, 0.2]
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            BoxLayout:
+                orientation: 'vertical'
+                BoxLayout:
+                    size_hint: [1, 0.5]
+                    orientation: 'horizontal'
+                    CheckBox:
+                        id: chk_0
+                        text: "0"
+                        color: (0, 0, 0, 1)
+                        group: "ans"
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_1
+                        text: "1"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_2
+                        text: "2"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                    CheckBox:
+                        id: chk_3
+                        text: "3"
+                        group: "ans"
+                        color: (0, 0, 0, 1)
+                        active: False
+                        on_active:
+                            root.active_check = self.text
+                BoxLayout:
+                    size_hint: [1, 0.3]
+                    orientation: 'horizontal'
+                    MDLabel:
+                        halign: "center"
+                        text: "Aldrig"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Ibland"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Ofta"
+                        color: (0, 0, 0, 1)
+                    MDLabel:
+                        halign: "center"
+                        text: "Nästan Alltid"
+                        color: (0, 0, 0, 1)
+
+        MDRectangleFlatButton:
+            pos_hint: {"center_x": 0.5, "center_y": 0.15}
+            size_hint: [0.4, 0.08]
+            text: "Nästa"
+            font_size: "20dp"
+            text_color: 0, 0, 1, 1
+            md_bg_color: 1, 1, 1, 0.8
+            on_release:
+                root.next_question()
+
+
+<SuperPushReq>:
+    name: "superpushreq"
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0.3, 0.6, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Mauri"
+            left_action_items: [["home", lambda x: root.goto_superhome()]]
+            right_action_items: [["logout", lambda x: root.goto_logout()]]
+        BoxLayout:
+    FloatLayout:
+        MDCard:
+            id: card_spec_user
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 1.5, "center_y": 0.5}
+            MDLabel:
+                id: user_label
+                color: (0, 0, 0, 1)
+                halign: "center"
+                font_size: "25dp"
+            TwoLineIconListItem:
+                text: "Skicka uppgift: IDS-100"
+                secondary_text: "Formulär för att visualisera problemområden"
+                on_release:
+                    root.push_req_ids_100()
+                IconLeftWidget:
+                    id: ids_icon
+                    icon: "plus"
+            TwoLineIconListItem:
+                text: "Skicka uppgift: Tillfredsskalan"
+                secondary_text: "Formulär för att visualisera problemområden"
+                IconLeftWidget:
+                    id: satis_icon
+                    icon: "plus"
+        MDCard:
+            id: card_users
+            orientation: 'vertical'
+            size_hint: [1, 0.6]
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            ScrollView:
+                MDList:
+                    pos_hint:  {"center_y": 0.5}
+                    id: list_users
